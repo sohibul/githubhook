@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-app.post('/', (req, res) => {
+app.post('/post-gan', (req, res) => {
   console.log("POST success");
   res.send(true);
 });
