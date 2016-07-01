@@ -6,6 +6,7 @@ app.post('/post-gan', (req, res) => {
   console.log("POST success");
   var signature = req.get('X-Hub-Signature');
   console.log("signature ", signature);
+  console.log("req", req);
   exec('npm run deploy', {cwd: '../dev/'}, (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`);
