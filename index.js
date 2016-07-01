@@ -4,7 +4,7 @@ var app = express();
 
 app.post('/post-gan', (req, res) => {
   console.log("POST success");
-  exec('npm run deploy', {cwd: '../hara-ifm/'}, (error, stdout, stderr) => {
+  exec('npm run deploy', {cwd: '../dev/'}, (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`);
       return;
