@@ -6,7 +6,7 @@ var app = express();
 app.post('/post-gan', (req, res) => {
   console.log("POST success");
   var headers = req.headers;
-  var signature = header['x-hub-signature'];
+  var signature = headers['x-hub-signature'];
   var payload = req.body;
   console.log("signature", signature);
   console.log("payload", payload);
