@@ -4,9 +4,8 @@ var app = express();
 
 app.post('/post-gan', (req, res) => {
   console.log("POST success");
-  var signature = req.get('X-Hub-Signature');
-  console.log("signature ", signature);
-  console.log("req", req);
+  var payload_body = req.body.read;
+  console.log("payload_body ", payload_body);  
   exec('npm run deploy', {cwd: '../dev/'}, (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`);
