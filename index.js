@@ -4,7 +4,7 @@ var app = express();
 
 app.post('/post-gan', (req, res) => {
   console.log("POST success");
-  var payload_body = req.payload_body;
+  var payload_body = req.body;
   console.log("payload body", payload_body);
   // exec('npm run deploy', {cwd: '../dev/'}, (error, stdout, stderr) => {
   //   if (error) {
