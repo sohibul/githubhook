@@ -1,13 +1,16 @@
 var express = require('express');
 var exec = require('child_process').exec;
+var crypto = require('crypto').
 var app = express();
 
 app.post('/post-gan', (req, res) => {
   console.log("POST success");
-  var payload_body = req.body;
   var headers = req.headers;
-  console.log("payload body", payload_body);
-  console.log("headers", headers);
+  var signature = header['x-hub-signature'];
+  var payload = req.body;
+  console.log("signature", signature);
+  console.log("payload", payload);
+
   // exec('npm run deploy', {cwd: '../dev/'}, (error, stdout, stderr) => {
   //   if (error) {
   //     console.error(`exec error: ${error}`);
