@@ -4,15 +4,16 @@ var app = express();
 
 app.post('/post-gan', (req, res) => {
   console.log("POST success");
-  exec('cd ../dev/ && npm run deploy', (error, stdout, stderr) => {
+  exec('npm run clean', {cwd: '../hara-ifm/'}, (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`);
       return;
     }
-    console.log("exec success");
+    console.log('stdout: ', stdout);
+    console.log('stderr: ', stderr);
   });
 
-  res.send(true);
+  res.send("POST GAN");
 });
 
 app.get('/get-gan', (req, res) => {
