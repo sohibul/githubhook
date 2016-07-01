@@ -4,7 +4,8 @@
   "description": "github webhook for hara-ifm",
   "main": "index.js",
   "scripts": {
-    "start": "forever start index.js"
+    "start": "forever start index.js",
+    "deploy": "git pull && forever restart index.js"
   },
   "author": "",
   "license": "ISC",
