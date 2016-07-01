@@ -1,6 +1,6 @@
 var express = require('express');
 var exec = require('child_process').exec;
-var crypto = require('crypto').
+var crypto = require('crypto');
 var app = express();
 
 app.post('/post-gan', (req, res) => {
