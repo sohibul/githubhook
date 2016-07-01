@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "forever start index.js",
-    "deploy": "git pull && forever restart index.js"
+    "deploy": "git pull && forever restart index.js",
+    "log": "forever logs index.js -f"
   },
   "author": "",
   "license": "ISC",
