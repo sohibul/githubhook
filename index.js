@@ -4,16 +4,16 @@ var app = express();
 
 app.post('/post-gan', (req, res) => {
   console.log("POST success");
-  var payload_body = req.body.read;
-  console.log("payload_body ", payload_body);  
-  exec('npm run deploy', {cwd: '../dev/'}, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return;
-    }
-    console.log('stdout: ', stdout);
-    console.log('stderr: ', stderr);
-  });
+  var headers = req.headers;
+  console.log("headers ", headers);
+  // exec('npm run deploy', {cwd: '../dev/'}, (error, stdout, stderr) => {
+  //   if (error) {
+  //     console.error(`exec error: ${error}`);
+  //     return;
+  //   }
+  //   console.log('stdout: ', stdout);
+  //   console.log('stderr: ', stderr);
+  // });
 
   res.send("POST GAN");
 });
