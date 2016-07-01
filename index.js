@@ -1,7 +1,10 @@
 var express = require('express');
+var boryParser = require('body-parser');
 var exec = require('child_process').exec;
 var crypto = require('crypto');
 var app = express();
+
+app.use(bodyParser.json()); // for parsing application/json
 
 app.post('/post-gan', (req, res) => {
   console.log("POST success");
@@ -10,6 +13,7 @@ app.post('/post-gan', (req, res) => {
   var payload = req.body;
   console.log("signature", signature);
   console.log("payload", payload);
+  console.log("request", req);
 
   // exec('npm run deploy', {cwd: '../dev/'}, (error, stdout, stderr) => {
   //   if (error) {
