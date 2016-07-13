@@ -1,5 +1,5 @@
-var express = require('express');
-var boryParser = require('body-parser');
+pvar express = require('express');
+var bodyParser = require('body-parser');
 var exec = require('child_process').exec;
 var crypto = require('crypto');
 var app = express();
