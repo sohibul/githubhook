@@ -15,7 +15,7 @@ app.post('/post-gan', (req, res) => {
   // console.log("payload", payload);
   // console.log("request", req);
 
-  exec('npm run redeploy', {cwd: '../dev/'}, (error, stdout, stderr) => {
+  exec('npm run redeploy', {cwd: '../hara-ifm/'}, (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`);
       return;
