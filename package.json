@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "forever start index.js",
+    "restart": "forever restart index.js",
+    "stop": "forever stop index.js",
     "deploy": "git pull && forever restart index.js",
     "log": "forever logs index.js -f"
   },

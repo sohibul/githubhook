@@ -11,18 +11,23 @@ app.post('/post-gan', (req, res) => {
   var headers = req.headers;
   var signature = headers['x-hub-signature'];
   var payload = req.body;
-  // console.log("signature", signature);
-  // console.log("payload", payload);
-  // console.log("request", req);
 
-  exec('npm run redeploy', {cwd: '../hara-ifm/'}, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return;
-    }
-    console.log('stdout: ', stdout);
-    console.log('stderr: ', stderr);
-  });
+  var ref = payload.ref;
+  var arr = ref.split("/");
+  var branch = arr[arr.length - 1];
+
+  // deploy only in branch 'development'
+  if (branch === 'development') {
+    var script = 'git checkout ' + branch + ' && npm run redeploy';
+    exec(script, {cwd: '../hara-ifm/'}, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        return;
+      }
+      console.log('stdout: ', stdout);
+      console.log('stderr: ', stderr);
+    });
+  }
 
   res.send("POST GAN");
 });
