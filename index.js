@@ -16,18 +16,19 @@ app.post('/post-gan', (req, res) => {
   var arr = ref.split("/");
   var branch = arr[arr.length - 1];
 
-  // deploy only in branch 'development'
-  if (branch === 'development') {
-    var script = 'git checkout ' + branch + ' && npm run redeploy';
-    exec(script, {cwd: '../hara-ifm/'}, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`exec error: ${error}`);
-        return;
-      }
-      console.log('stdout: ', stdout);
-      console.log('stderr: ', stderr);
-    });
-  }
+  // deploy if both branches in local and server are same
+  var script = '' +
+  'if [ $(git symbolic-ref --short HEAD) = "' + branch + '" ]; ' +
+  'then npm run redeploy; fi';
+
+  exec(script, {cwd: '../hara-ifm/'}, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log('stdout: ', stdout);
+    console.log('stderr: ', stderr);
+  });
 
   res.send("POST GAN");
 });
